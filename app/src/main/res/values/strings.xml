@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">NotesGB</string>
+    <string name="app_name">Заметки</string>
+    <string name="save_btn">Сохранить</string>
+    <string name="note_description">Описание заметки</string>
+    <string name="note_name">Название заметки</string>
 </resources>
