@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class FragmentNotesDetail extends Fragment {
@@ -22,9 +20,7 @@ public class FragmentNotesDetail extends Fragment {
     public static FragmentNotesDetail newInstance(NotesEntity notesEntity) {
         FragmentNotesDetail fragmentNotesDetail = new FragmentNotesDetail();
         Bundle args = new Bundle();
-
         args.putParcelable(NOTES_KEY, notesEntity);
-
         fragmentNotesDetail.setArguments(args);
         return fragmentNotesDetail;
     }
