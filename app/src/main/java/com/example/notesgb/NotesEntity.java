@@ -7,9 +7,9 @@ import java.io.Serializable;
 import java.util.UUID;
 
 public class NotesEntity implements Serializable {
-    private final String id;
-    private final String noteName;
-    private final String noteDescription;
+    private String id;
+    private String noteName;
+    private String noteDescription;
 
     public NotesEntity(String id, String noteName, String noteDescription) {
         this.id = id;

@@ -10,32 +10,31 @@ import android.widget.ListView;
 
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class NotesListFragment extends Fragment {
-    private ListView notesListView;
+    private RecyclerView recyclerView;
     private ArrayList<NotesEntity> notes = new ArrayList<>();
-    private ArrayAdapter<NotesEntity> adapter;
+    private NotesListAdapter adapter;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
-        notesListView = view.findViewById(R.id.notes_list);
+        recyclerView = view.findViewById(R.id.recycler_list);
         return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, notes);
-        notesListView.setAdapter(adapter);
-        notesListView.setOnItemClickListener((parent, view1, position, id) -> {
-            NotesEntity notesEntity = notes.get(position);
-            getController().openProfileScreen(notesEntity);
+        adapter = new NotesListAdapter();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+        adapter.setData(notes);
 
-
-        });
 
     }
 
@@ -73,6 +72,7 @@ public class NotesListFragment extends Fragment {
 
     interface Controller {
         void openProfileScreen(NotesEntity notesEntity);
+
 
     }
 
