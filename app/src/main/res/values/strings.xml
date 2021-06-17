@@ -8,4 +8,6 @@
     <string name="settings">Настройки</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="change_theme">Сменить тему</string>
+    <string name="create_note">Новая заметка</string>
+    <string name="edit_note">Редактирование заметки</string>
 </resources>

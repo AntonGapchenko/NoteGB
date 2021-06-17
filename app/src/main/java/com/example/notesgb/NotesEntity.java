@@ -3,18 +3,27 @@ package com.example.notesgb;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class NotesEntity implements Parcelable {
-    private String noteName;
-    private String noteDescription;
+import java.io.Serializable;
+import java.util.UUID;
 
-    public NotesEntity(String noteName, String noteDescription) {
+public class NotesEntity implements Serializable {
+    private final String id;
+    private final String noteName;
+    private final String noteDescription;
+
+    public NotesEntity(String id, String noteName, String noteDescription) {
+        this.id = id;
         this.noteName = noteName;
         this.noteDescription = noteDescription;
     }
 
-    protected NotesEntity(Parcel in) {
-        noteName = in.readString();
-        noteDescription = in.readString();
+    public static String generateId() {
+        return UUID.randomUUID().toString();
+    }
+
+
+    public String getId() {
+        return id;
     }
 
     public String getNoteName() {
@@ -31,26 +40,4 @@ public class NotesEntity implements Parcelable {
     }
 
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(noteName);
-        dest.writeString(noteDescription);
-    }
-
-    public static final Creator<NotesEntity> CREATOR = new Creator<NotesEntity>() {
-        @Override
-        public NotesEntity createFromParcel(Parcel in) {
-            return new NotesEntity(in);
-        }
-
-        @Override
-        public NotesEntity[] newArray(int size) {
-            return new NotesEntity[size];
-        }
-    };
 }
