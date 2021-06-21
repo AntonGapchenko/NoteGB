@@ -10,4 +10,8 @@
     <string name="change_theme">Сменить тему</string>
     <string name="create_note">Новая заметка</string>
     <string name="edit_note">Редактирование заметки</string>
+    <string name="note"> Заметка\t</string>
+    <string name="delete">\tудалена</string>
+    <string name="cancel">Отмена</string>
+
 </resources>
