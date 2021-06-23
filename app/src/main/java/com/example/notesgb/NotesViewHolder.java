@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class NotesViewHolder extends RecyclerView.ViewHolder {
-    private TextView titleView;
-    private TextView descriptionView;
-    private CardView cardView;
+    private final TextView titleView;
+    private final TextView descriptionView;
+    private final CardView cardView;
     private NotesEntity notesEntity;
 
     public NotesViewHolder(@NonNull ViewGroup parent, @Nullable NotesListAdapter.OnItemClickListener clickListener) {
@@ -23,16 +23,12 @@ public class NotesViewHolder extends RecyclerView.ViewHolder {
         descriptionView = itemView.findViewById(R.id.text_description_view);
         cardView.setOnClickListener(v -> {
             clickListener.onItemClick(notesEntity);
-
         });
-
     }
 
     public void bind(NotesEntity notesEntity) {
         this.notesEntity = notesEntity;
         titleView.setText(notesEntity.getNoteName());
         descriptionView.setText(notesEntity.getNoteDescription());
-
-
     }
 }

@@ -1,6 +1,7 @@
 package com.example.notesgb;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,12 +50,13 @@ public class NotesListFragment extends Fragment {
                     .setAction(R.string.cancel, v -> {
                         notes.add(position, deletedNote);
                         adapter.notifyItemChanged(position);
-
                     }).show();
-
         }
 
-
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
     };
 
     public void addNote(NotesEntity note) {
@@ -64,7 +66,6 @@ public class NotesListFragment extends Fragment {
         }
         notes.add(note);
         adapter.setData(notes);
-
     }
 
     private NotesEntity findNoteWithId(String id) {
@@ -72,7 +73,6 @@ public class NotesListFragment extends Fragment {
             if (note.getId().equals(id)) {
                 return note;
             }
-
         }
         return null;
     }
@@ -93,8 +93,6 @@ public class NotesListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         initRecyclerView();
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerView);
 
     }
 
@@ -103,11 +101,11 @@ public class NotesListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         adapter.setData(notes);
-
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
     interface Controller {
         void openProfileScreen(NotesEntity notesEntity);
     }
-
 }

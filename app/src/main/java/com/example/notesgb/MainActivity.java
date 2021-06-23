@@ -1,12 +1,10 @@
 package com.example.notesgb;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -31,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements NotesListFragment
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, new NotesListFragment(), NOTE_FRAGMENT_TAG)
                 .commit();
-
-
     }
 
 
